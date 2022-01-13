@@ -1,0 +1,83 @@
+A fila é uma estrutura de dados do tipo FIFO: “o primeiro elemento que entra é o primeiro que sai” (first in, first out ).
+A idéia fundamental da fila é que só podemos inserir um novo elemento no final da fila e só podemos retirar o elemento no inicio.
+A estrutura fila é uma analogia natural com o conceito de fila que usamos no nosso dia a dia: quem primeiro entra numa fila é o primeiro a ser atendido (a sair da fila).
+Filas permitem manipulações em duas extremidades: no início (ou frente) e no fim (ou cauda). Inserções são feitas na cauda e Remoções são feitas na frente.
+Segue o código-fonte de uma classe que implementa a Fila.
+
+// implementação de uma fila com 100 elementos
+// Desenvolvido por: Antonio Rodrigo dos Santos Silva
+// rodrigosantos@ifce.edu.br
+
+import javax.swing.*;
+
+class Fila{
+    int inicio;
+    int fim;
+    int tamanho;
+    int qtdeElementos;
+    int f[];
+
+    public Fila(){
+        inicio = fim = -1;
+        tamanho = 100;
+        f = new int[tamanho];
+        qtdeElementos = 0;
+    }
+
+    public boolean estaVazia(){
+        if (qtdeElementos == 0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean estaCheia(){
+        if (qtdeElementos == tamanho - 1){
+            return true;
+        }
+        return false;
+    }
+
+    public void adicionar(int e){
+        if (! estaCheia()){
+            if (inicio == -1){
+                inicio = 0;
+            }
+            fim++;
+            f[fim] = e;
+            qtdeElementos++;
+        }
+    }
+
+    public void remover(){
+        if (! estaVazia() ){
+            inicio++;
+            qtdeElementos--;
+        }
+    }
+
+    public void mostrar(){
+        String elementos = "";
+            for (int i = inicio; i<=fim; i++) {
+                elementos += f[i]+ " - ";
+            }
+            JOptionPane.showMessageDialog(null, elementos);
+    }
+}
+
+public class FilaAplicacao {
+    public static void main(String[] args) {
+        Fila f = new Fila();        
+        f.adicionar(10);
+        f.adicionar(12);
+        f.adicionar(30);
+        f.mostrar();
+        f.remover();
+        f.mostrar();
+    }
+}Emecho "# filas-java" >> README.md 
+git init 
+git add README.md 
+git commit -m "first commit" 
+git branch -M main 
+git remote add origin https://github.co
